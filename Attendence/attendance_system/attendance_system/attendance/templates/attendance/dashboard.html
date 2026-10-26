@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Dashboard</title>
+
+    <style>
+
+        body {
+            font-family: Arial;
+            background: #f5f5f5;
+        }
+
+        .container {
+            width: 90%;
+            margin: 30px auto;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            flex: 1;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 0 8px #ccc;
+        }
+
+        .number {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        a {
+            text-decoration: none;
+            background: #007bff;
+            color: white;
+            padding: 10px 15px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Attendance Dashboard</h1>
+
+    <a href="{% url 'student_register' %}">
+        + Register Student
+    </a>
+
+    <br><br>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Total Students</h3>
+            <div class="number">
+                {{ total_students }}
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Present</h3>
+            <div class="number">
+                {{ present }}
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Absent</h3>
+            <div class="number">
+                {{ absent }}
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Attendance %</h3>
+            <div class="number">
+                {{ attendance_percentage }}%
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+
+    <h2>Recent Attendance</h2>
+
+    <table border="1" width="100%" cellpadding="10">
+
+        <tr>
+            <th>Student</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Status</th>
+        </tr>
+
+        <tr>
+            <td>Example Student</td>
+            <td>03-09-2026</td>
+            <td>09:00 AM</td>
+            <td>Present</td>
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+</html>

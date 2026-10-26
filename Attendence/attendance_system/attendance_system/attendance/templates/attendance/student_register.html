@@ -1,0 +1,149 @@
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Student Registration</title>
+
+    <style>
+
+        body {
+            font-family: Arial;
+            background: #f5f5f5;
+        }
+
+        .form-box {
+            width: 500px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        .login {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="form-box">
+
+    <h2>Student Registration</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        <h3>Login Details</h3>
+
+        <label>Username</label>
+        {{ user_form.username }}
+
+        {% if user_form.username.errors %}
+            <div class="error">
+                {{ user_form.username.errors }}
+            </div>
+        {% endif %}
+
+
+        <label>Password</label>
+        {{ user_form.password1 }}
+
+        {% if user_form.password1.errors %}
+            <div class="error">
+                {{ user_form.password1.errors }}
+            </div>
+        {% endif %}
+
+
+        <label>Confirm Password</label>
+        {{ user_form.password2 }}
+
+        {% if user_form.password2.errors %}
+            <div class="error">
+                {{ user_form.password2.errors }}
+            </div>
+        {% endif %}
+
+
+        <h3>Student Details</h3>
+
+        <label>Student ID</label>
+        {{ student_form.student_id }}
+
+        <label>Name</label>
+        {{ student_form.name }}
+
+        <label>Roll No</label>
+        {{ student_form.roll_no }}
+
+        <label>Class</label>
+        {{ student_form.class_name }}
+
+        <label>Department</label>
+        {{ student_form.department }}
+
+        <label>Face Image</label>
+        {{ student_form.face_image }}
+
+        <br><br>
+
+        <button type="submit">
+            Register Student
+        </button>
+
+    </form>
+
+
+    <div class="login">
+
+        <p>Already have an account?</p>
+
+        <a href="{% url 'login' %}">
+            Login
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
+```

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Create Account</title>
+
+    <style>
+
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+        }
+
+        .register-box {
+            width: 400px;
+            margin: 60px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .errors {
+            color: red;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="register-box">
+
+    <h2>Create Account</h2>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        <p>
+            <label>Username</label>
+            {{ form.username }}
+        </p>
+
+        <p>
+            <label>Password</label>
+            {{ form.password1 }}
+        </p>
+
+        <p>
+            <label>Confirm Password</label>
+            {{ form.password2 }}
+        </p>
+
+        {% if form.errors %}
+            <div class="errors">
+                {{ form.errors }}
+            </div>
+        {% endif %}
+
+        <button type="submit">
+            Register
+        </button>
+
+    </form>
+
+    <div class="login">
+
+        <p>Already have an account?</p>
+
+        <a href="{% url 'login' %}">
+            Login
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
